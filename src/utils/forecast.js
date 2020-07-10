@@ -5,10 +5,9 @@ const forecast = (latitude, longitude, callback) => {
   const url =
     "http://api.weatherstack.com/current?access_key=8747227391d5fe41213fdbf8fbb605a5" +
     "&query=" +
-    latitude +
-    "," +
     longitude +
-    "units=-m";
+    "," +
+    latitude;
     console.log(url);
   request(
     {
@@ -23,6 +22,7 @@ const forecast = (latitude, longitude, callback) => {
             callback("Couldn't acces the location", undefined);
         }
         else{
+            console.log(body.current);
             callback(undefined, body.current);
         }
     }
